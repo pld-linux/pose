@@ -10,6 +10,7 @@ Source0:	http://www.palmos.com/dev/tools/emulator/sources/emulator_src_%{version
 # Source0-md5:	c69b10798e524b999739bf1950125655
 Patch0:		%{name}-conf.patch
 Patch1:		%{name}-dirs.patch
+Patch2:		%{name}-fltk10compat.patch
 URL:		http://www.palmos.com/dev/tools/emulator/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -36,6 +37,7 @@ uruchamiaæ dowolne aplikacje firm trzecich.
 %setup -q -n Emulator_Src_%{version}
 %patch0 -p1
 %patch1 -p0
+%patch2 -p1
 
 %build
 cd BuildUnix
