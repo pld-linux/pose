@@ -54,6 +54,7 @@ rm -f missing
 %install
 rm -rf $RPM_BUILD_ROOT
 
+cd BuildUnix
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
@@ -62,6 +63,5 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc ChangeLog README
-%attr(755,root,root) %{_bindir}/*
-%{_datadir}/%{name}
+#doc ChangeLog README
+%attr(755,root,root) %{_bindir}/pose
