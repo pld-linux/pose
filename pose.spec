@@ -16,7 +16,7 @@ Patch4:		%{name}-3.5-relax-opt.patch
 URL:		http://www.palmos.com/dev/tools/emulator/
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	fltk-devel
+BuildRequires:	fltk-gl-devel
 BuildRequires:	glut-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
