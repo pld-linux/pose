@@ -5,9 +5,13 @@ Version:	3.5
 Release:	0.1
 License:	GPL
 Group:		Emulators
+#Source0Download: http://www.palmos.com/dev/tools/emulator/
 Source0:	http://www.palmos.com/dev/tools/emulator/sources/emulator_src_%{version}.tar.gz
-URL:		http://www.palmos.com/dev/tools/emulator/
+# Source0-md5:	c69b10798e524b999739bf1950125655
 Patch0:		%{name}-conf.patch
+URL:		http://www.palmos.com/dev/tools/emulator/
+BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	fltk-devel
 BuildRequires:	glut-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -44,7 +48,8 @@ rm -f missing
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
