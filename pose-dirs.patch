@@ -1,0 +1,265 @@
+--- BuildUnix/Gzip/Makefile.am
++++ BuildUnix/Gzip/Makefile.am
+@@ -8,7 +8,7 @@
+ ##
+ SUFFIXES =	.cpp
+ 
+-VPATH =		$(srcdir)/../../SrcShared/Gzip:
++VPATH =		../../SrcShared/Gzip:
+ 
+ ## no subdir specific flags needed -- just go with globals
+ LOCAL_CFLAGS =
+--- BuildUnix/Makefile.am
++++ BuildUnix/Makefile.am
+@@ -8,14 +8,14 @@
+ 
+ SUFFIXES		=	.cpp
+ 
+-VPATH			=	$(srcdir)/../SrcUnix:					\
+-					$(srcdir)/../SrcShared:					\
+-					$(srcdir)/../SrcShared/Hardware:		\
+-					$(srcdir)/../SrcShared/Hardware/TRG:	\
+-					$(srcdir)/../SrcShared/omnithread:		\
+-					$(srcdir)/../SrcShared/Palm/Platform/Core/System/Src:	\
+-					$(srcdir)/../SrcShared/Patches:			\
+-					$(srcdir)/../SrcShared/UAE:
++VPATH			=	../SrcUnix:					\
++					../SrcShared:					\
++					../SrcShared/Hardware:		\
++					../SrcShared/Hardware/TRG:	\
++					../SrcShared/omnithread:		\
++					../SrcShared/Palm/Platform/Core/System/Src:	\
++					../SrcShared/Patches:			\
++					../SrcShared/UAE:
+ 
+ 
+ ## POSER_CFLAGS and POSER_CXXFLAGS defined by configure.in.
+@@ -23,26 +23,26 @@
+ CFLAGS			=   $(POSER_CFLAGS) $(LOCAL_CFLAGS) $(FLAGS) $(THREAD_FLAGS) $(X_CFLAGS)
+ CXXFLAGS		= 	$(POSER_CXXFLAGS) $(LOCAL_CFLAGS) $(FLAGS) $(THREAD_FLAGS) $(X_CFLAGS)
+ 
+-INCLUDES		=	-I$(srcdir)/../SrcShared
+-INCLUDES		+=	-I$(srcdir)/../SrcShared/Hardware
+-INCLUDES		+=	-I$(srcdir)/../SrcShared/Hardware/TRG
+-INCLUDES		+=	-I$(srcdir)/../SrcShared/Palm/Device
+-INCLUDES		+=	-I$(srcdir)/../SrcShared/Palm/Platform
+-INCLUDES		+=	-I$(srcdir)/../SrcShared/Palm/Platform/Core/Hardware/IncsPrv
+-INCLUDES		+=	-I$(srcdir)/../SrcShared/Palm/Platform/Core/System/IncsPrv
+-INCLUDES		+=	-I$(srcdir)/../SrcShared/Palm/Platform/Incs
+-INCLUDES		+=	-I$(srcdir)/../SrcShared/Palm/Platform/Incs/Core
+-INCLUDES		+=	-I$(srcdir)/../SrcShared/Palm/Platform/Incs/Core/Hardware
+-INCLUDES		+=	-I$(srcdir)/../SrcShared/Palm/Platform/Incs/Core/System
+-INCLUDES		+=	-I$(srcdir)/../SrcShared/Palm/Platform/Incs/Core/UI
+-INCLUDES		+=	-I$(srcdir)/../SrcShared/Palm/Platform/Incs/Libraries
+-INCLUDES		+=	-I$(srcdir)/../SrcShared/Gzip
+-INCLUDES		+=	-I$(srcdir)/../SrcShared/jpeg
+-INCLUDES		+=	-I$(srcdir)/../SrcShared/omnithread
+-INCLUDES		+=	-I$(srcdir)/../SrcShared/Patches
+-INCLUDES		+=	-I$(srcdir)/../SrcShared/UAE
+-INCLUDES		+=	-I$(srcdir)/../SrcUnix
+-INCLUDES		+=	-I$(srcdir)/../SrcUnix/espws-2.0
++INCLUDES		=	-I../SrcShared
++INCLUDES		+=	-I../SrcShared/Hardware
++INCLUDES		+=	-I../SrcShared/Hardware/TRG
++INCLUDES		+=	-I../SrcShared/Palm/Device
++INCLUDES		+=	-I../SrcShared/Palm/Platform
++INCLUDES		+=	-I../SrcShared/Palm/Platform/Core/Hardware/IncsPrv
++INCLUDES		+=	-I../SrcShared/Palm/Platform/Core/System/IncsPrv
++INCLUDES		+=	-I../SrcShared/Palm/Platform/Incs
++INCLUDES		+=	-I../SrcShared/Palm/Platform/Incs/Core
++INCLUDES		+=	-I../SrcShared/Palm/Platform/Incs/Core/Hardware
++INCLUDES		+=	-I../SrcShared/Palm/Platform/Incs/Core/System
++INCLUDES		+=	-I../SrcShared/Palm/Platform/Incs/Core/UI
++INCLUDES		+=	-I../SrcShared/Palm/Platform/Incs/Libraries
++INCLUDES		+=	-I../SrcShared/Gzip
++INCLUDES		+=	-I../SrcShared/jpeg
++INCLUDES		+=	-I../SrcShared/omnithread
++INCLUDES		+=	-I../SrcShared/Patches
++INCLUDES		+=	-I../SrcShared/UAE
++INCLUDES		+=	-I../SrcUnix
++INCLUDES		+=	-I../SrcUnix/espws-2.0
+ 
+ SRC_UNIX		= 	EmApplicationFltk.cpp			\
+ 					EmApplicationFltk.h				\
+@@ -411,16 +411,16 @@
+ pose_SOURCES	=	$(SRC_UNIX) $(SRC_UNIX_GEN) $(SRC_SHARED) $(SRC_SHARED_HARDWARE)
+ pose_SOURCES	+=	$(SRC_PATCHES) $(SRC_TRG) $(SRC_UAE) $(SRC_PALM) $(SRC_THREAD)
+ 
+-ResStrings.cpp: $(srcdir)/../SrcShared/Strings.txt
+-	perl -x $(srcdir)/../SrcShared/Strings.txt
++ResStrings.cpp: ../SrcShared/Strings.txt
++	perl -x ../SrcShared/Strings.txt
+ 
+-EmDlgFltkFactory.h EmDlgFltkFactory.cpp : $(srcdir)/../SrcUnix/EmDlgFltkFactory.fl
+-	fluid -c $(srcdir)/../SrcUnix/EmDlgFltkFactory.fl
++EmDlgFltkFactory.h EmDlgFltkFactory.cpp : ../SrcUnix/EmDlgFltkFactory.fl
++	fluid -c ../SrcUnix/EmDlgFltkFactory.fl
+ 
+ EmDlgFltk.o : EmDlgFltkFactory.h
+ 
+ mytags:
+-	etags -R $(srcdir)/../SrcUnix/* $(srcdir)/../SrcShared/*
++	etags -R ../SrcUnix/* ../SrcShared/*
+ 
+ CLEANFILES		=		ResStrings.cpp
+ CLEANFILES		+=		EmDlgFltkFactory.h
+--- BuildUnix/espws-2.0/Makefile.am
++++ BuildUnix/espws-2.0/Makefile.am
+@@ -9,12 +9,12 @@
+ ##
+ SUFFIXES		=	.cxx
+ 
+-VPATH			=	$(srcdir)/../../SrcUnix/espws-2.0:
++VPATH			=	../../SrcUnix/espws-2.0:
+ 
+ CFLAGS			=   $(POSER_CFLAGS) $(LOCAL_CFLAGS) $(X_CFLAGS)
+ CXXFLAGS		= 	$(POSER_CXXFLAGS) $(LOCAL_CFLAGS) $(X_CFLAGS)
+ 
+-INCLUDES		=	-I$(srddir)/../../SrcUnix/espws-2.0
++INCLUDES		=	-I../../SrcUnix/espws-2.0
+ 
+ noinst_LIBRARIES	=	libposerespws.a
+ 
+--- BuildUnix/jpeg/Makefile.am
++++ BuildUnix/jpeg/Makefile.am
+@@ -9,7 +9,7 @@
+ ##
+ SUFFIXES		=	.cpp
+ 
+-VPATH			=	$(srcdir)/../../SrcShared/jpeg:
++VPATH			=	../../SrcShared/jpeg:
+ 
+ ## no subdir specific flags needed -- just go with globals
+ LOCAL_CFLAGS	=
+@@ -17,8 +17,8 @@
+ CFLAGS			=   $(POSER_CFLAGS) $(LOCAL_CFLAGS)
+ CXXFLAGS		= 	$(POSER_CXXFLAGS) $(LOCAL_CFLAGS)
+ 
+-INCLUDES		=	-I$(srcdir)/../../SrcShared/jpeg	\
+-					-I$(srcdir)/../../SrcUnix
++INCLUDES		=	-I../../SrcShared/jpeg	\
++					-I../../SrcUnix
+ 
+ noinst_LIBRARIES	=	libposerjpeg.a
+ 
+--- SrcShared/CGremlins.cpp
++++ SrcShared/CGremlins.cpp
+@@ -1126,7 +1126,7 @@
+ 			UInt32 step;
+ 
+ 			// Print error & stop...
+-			TheGremlinsP->Status (NULL, &step, NULL);
++			TheGremlinsP->StatuS (NULL, &step, NULL);
+ 			sprintf(text, "Error #%lx occurred while sending.  Gremlins at %ld.  Stopping.\n", inErr, step);
+ 			DbgMessage(text);
+ 			StubAppGremlinsOff();
+@@ -1205,7 +1205,7 @@
+ 			UInt32 step;
+ 			
+ 			// Print error & stop...
+-			TheGremlinsP->Status (NULL, &step, NULL);
++			TheGremlinsP->StatuS (NULL, &step, NULL);
+ 			sprintf(text, "Error #%lx occurred while processing.  Gremlins at %ld.  Stopping.\n", inErr, step);
+ 			DbgMessage(text);
+ 			StubAppGremlinsOff();
+@@ -1693,7 +1693,7 @@
+ 
+ /************************************************************
+  *
+- * FUNCTION: Status
++ * FUNCTION: StatuS
+  *
+  * DESCRIPTION: Return the gremlin number and counter.
+  *
+@@ -1710,7 +1710,7 @@
+  *			dia	9/1/98	Allows for NULL parameters.
+  *
+  *************************************************************/
+-void Gremlins::Status(UInt16 *currentNumber, UInt32 *currentStep, 
++void Gremlins::StatuS(UInt16 *currentNumber, UInt32 *currentStep, 
+ 	UInt32 *currentUntil)
+ {
+ 	if (currentNumber) *currentNumber = number;
+@@ -1872,7 +1872,7 @@
+ 		unsigned short	number;
+ 		unsigned long	step;
+ 		unsigned long	until;
+-		this->Status (&number, &step, &until);
++		this->StatuS (&number, &step, &until);
+ 
+ 		if (LogGremlins ())
+ 		{
+--- SrcShared/CGremlins.h
++++ SrcShared/CGremlins.h
+@@ -37,7 +37,7 @@
+ 	void		Save(SessionFile &f);
+ 	Boolean		Load(SessionFile &f);
+ 
+-	void		Status(UInt16 *currentNumber, UInt32 *currentStep,
++	void		StatuS(UInt16 *currentNumber, UInt32 *currentStep,
+ 					UInt32 *currentUntil);
+ 	Boolean		SetSeed(UInt32 newSeed);
+ 	void		SetUntil(UInt32 newUntil);
+--- SrcShared/EmPalmStructs.h
++++ SrcShared/EmPalmStructs.h
+@@ -18,6 +18,7 @@
+ #include "EmPalmStructs.i"
+ #include "HostControl.h"		// HostControlSelectorType, etc.
+ 
++#include <malloc.h>
+ #include <stddef.h>				// ptrdiff_t
+ 
+ /*
+--- SrcShared/Hordes.cpp
++++ SrcShared/Hordes.cpp
+@@ -290,7 +290,7 @@
+ 
+ /***********************************************************************
+  *
+- * FUNCTION:	Hordes::Status
++ * FUNCTION:	Hordes::StatuS
+  *
+  * DESCRIPTION: Returns several pieces of status information about the
+  *				currently running Gremlin in the Horde.
+@@ -306,10 +306,10 @@
+  ***********************************************************************/
+ 
+ void
+-Hordes::Status (unsigned short *currentNumber, unsigned long *currentStep,
++Hordes::StatuS (unsigned short *currentNumber, unsigned long *currentStep,
+ 				unsigned long *currentUntil)
+ {
+-	gTheGremlin.Status (currentNumber, currentStep, currentUntil);
++	gTheGremlin.StatuS (currentNumber, currentStep, currentUntil);
+ }
+ 
+ 
+@@ -491,7 +491,7 @@
+ 	unsigned long	step;
+ 	unsigned long	until;
+ 
+-	Hordes::Status (&number, &step, &until);
++	Hordes::StatuS (&number, &step, &until);
+ 
+ 	return step;
+ }
+@@ -517,7 +517,7 @@
+ 	unsigned long	step;
+ 	unsigned long	until;
+ 
+-	Hordes::Status (&number, &step, &until);
++	Hordes::StatuS (&number, &step, &until);
+ 
+ 	return until;
+ }
+--- SrcShared/Hordes.h
++++ SrcShared/Hordes.h
+@@ -72,7 +72,7 @@
+ 		static Bool				CanResume				(void);
+ 		static Bool				CanStop					(void);
+ 
+-		static void				Status					(unsigned short* currentNumber,
++		static void				StatuS					(unsigned short* currentNumber,
+ 														 unsigned long* currentStep,
+ 														 unsigned long* currentUntil);
+ 
