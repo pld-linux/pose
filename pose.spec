@@ -2,7 +2,7 @@ Summary:	Palm OS emulator
 Summary(pl):	Emulator Palm OS
 Name:		pose
 Version:	3.5
-Release:	0.2
+Release:	0.3
 License:	GPL
 Group:		Emulators
 #Source0Download: http://www.palmos.com/dev/tools/emulator/
@@ -58,10 +58,15 @@ cd BuildUnix
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+install -d $RPM_BUILD_ROOT%{_datadir}/%{name} 
+cd ..
+install  ROMTransfer/Source/ROM_Transfer.prc $RPM_BUILD_ROOT%{_datadir}/%{name}
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-#doc ChangeLog README
-%attr(755,root,root) %{_bindir}/pose
+%doc Docs/*
+%attr(755,root,root) %{_bindir}/*
+%{_datadir}/%{name}
