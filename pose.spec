@@ -2,13 +2,14 @@ Summary:	Palm OS emulator
 Summary(pl):	Emulator Palm OS
 Name:		pose
 Version:	3.5
-Release:	0.1
+Release:	0.2
 License:	GPL
 Group:		Emulators
 #Source0Download: http://www.palmos.com/dev/tools/emulator/
 Source0:	http://www.palmos.com/dev/tools/emulator/sources/emulator_src_%{version}.tar.gz
 # Source0-md5:	c69b10798e524b999739bf1950125655
 Patch0:		%{name}-conf.patch
+Patch1:		%{name}-dirs.patch
 URL:		http://www.palmos.com/dev/tools/emulator/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -33,7 +34,8 @@ uruchamiaæ dowolne aplikacje firm trzecich.
 
 %prep
 %setup -q -n Emulator_Src_%{version}
-%patch -p1
+%patch0 -p1
+%patch1 -p0
 
 %build
 cd BuildUnix
