@@ -1,0 +1,11 @@
+--- Emulator_Src_3.5/BuildUnix/configure.in.opt	2004-02-06 22:07:50.612172736 +0100
++++ Emulator_Src_3.5/BuildUnix/configure.in	2004-02-06 22:08:16.523658572 +0100
+@@ -269,7 +269,7 @@
+ dnl	FLAGS_OPTIMIZE="-O2",
+ dnl	FLAGS_OPTIMIZE="")
+ 
+-FLAGS_OPTIMIZE="-O2"
++FLAGS_OPTIMIZE="-O"
+ 
+ 
+ dnl ========================================================
