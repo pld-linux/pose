@@ -1,0 +1,11 @@
+--- Emulator_Src_3.5/BuildUnix/configure.in~	Fri Mar 29 14:11:13 2002
++++ Emulator_Src_3.5/BuildUnix/configure.in	Tue Jun 10 13:51:01 2003
+@@ -351,7 +351,7 @@
+ 
+ AC_LANG_CPLUSPLUS
+ AC_CACHE_CHECK([for 'int fl_height (void)' in -lfltk], pose_cv_lib_fltk_found,
+-	AC_TRY_LINK([#include <Fl/fl_draw.H>], [fl_height ();],
++	AC_TRY_LINK([#include <FL/fl_draw.H>], [fl_height ();],
+ 		pose_cv_lib_fltk_found=yes, pose_cv_lib_fltk_found=no))
+ 
+ LIBS="$save_LIBS"
