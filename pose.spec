@@ -1,5 +1,5 @@
-Summary:	palm emulator
-Summary(pl):	palm emulator
+Summary:	Palm OS emulator
+Summary(pl):	Emulator Palm OS
 Name:		pose
 Version:	3.5
 Release:	0.1
@@ -13,8 +13,19 @@ BuildRequires:	glut-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
+Palm OS Emulator is an application that emulates the hardware for most
+Palm Computing Platform Hardware devices (e.g., Pilot, PalmPilot, Palm
+III, Palm V, Palm VII, etc.). With the Palm OS Emulator, you can
+emulate the functions of a Palm hardware device, including running the
+built-in application, as well as installing and running 3rd party
+applications.
 
 %description -l pl
+Palm OS Emulator to aplikacja emuluj±ca sprzêt wiêkszo¶ci urz±dzeñ
+platformy Palm Computing (np. Pilot, PalmPilot, Palm III, Palm V, Palm
+VII itp.). Przy u¿yciu tego emulatora mo¿na emulowaæ funkcje urz±dzeñ
+Palm w³±cznie z wbudowanymi aplikacjami, a tak¿e instalowaæ i
+uruchamiaæ dowolne aplikacje firm trzecich.
 
 %prep
 %setup -q -n Emulator_Src_%{version}
@@ -32,8 +43,6 @@ rm -f missing
 
 %install
 rm -rf $RPM_BUILD_ROOT
-# create directories if necessary
-#install -d $RPM_BUILD_ROOT
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
