@@ -1,0 +1,202 @@
+--- Emulator_Src_3.5/SrcShared/EmStream.h.orig	2002-03-29 14:11:14.000000000 +0100
++++ Emulator_Src_3.5/SrcShared/EmStream.h	2004-10-20 23:05:33.978882248 +0200
+@@ -90,7 +90,7 @@
+ 
+ 									container.resize (numElements);
+ 
+-									deque<T>::iterator	iter = container.begin ();
++									typename deque<T>::iterator	iter = container.begin ();
+ 									while (iter != container.end ())
+ 									{
+ 										*this >> *iter;
+@@ -108,7 +108,7 @@
+ 
+ 									container.resize (numElements);
+ 
+-									list<T>::iterator	iter = container.begin ();
++									typename list<T>::iterator	iter = container.begin ();
+ 									while (iter != container.end ())
+ 									{
+ 										*this >> *iter;
+@@ -126,7 +126,7 @@
+ 
+ 									container.resize (numElements);
+ 
+-									vector<T>::iterator	iter = container.begin ();
++									typename vector<T>::iterator	iter = container.begin ();
+ 									while (iter != container.end ())
+ 									{
+ 										*this >> *iter;
+@@ -143,7 +143,7 @@
+ 
+ 									*this << numElements;
+ 
+-									deque<T>::const_iterator	iter = container.begin ();
++									typename deque<T>::const_iterator	iter = container.begin ();
+ 									while (iter != container.end ())
+ 									{
+ 										*this << *iter;
+@@ -160,7 +160,7 @@
+ 
+ 									*this << numElements;
+ 
+-									list<T>::const_iterator	iter = container.begin ();
++									typename list<T>::const_iterator	iter = container.begin ();
+ 									while (iter != container.end ())
+ 									{
+ 										*this << *iter;
+@@ -177,7 +177,7 @@
+ 
+ 									*this << numElements;
+ 
+-									vector<T>::const_iterator	iter = container.begin ();
++									typename vector<T>::const_iterator	iter = container.begin ();
+ 									while (iter != container.end ())
+ 									{
+ 										*this << *iter;
+--- Emulator_Src_3.5/SrcShared/Hardware/EmRegs328.cpp.orig	2002-03-29 14:11:18.000000000 +0100
++++ Emulator_Src_3.5/SrcShared/Hardware/EmRegs328.cpp	2004-10-22 15:32:53.044378936 +0200
+@@ -141,13 +141,13 @@
+ 	0x2400,		//	Word		pllControl;					// $200: PLL Control Register
+ 	0x0123,		//	Word		pllFreqSel;					// $202: PLL Frequency Select Register
+ 	0x0000,		//	Word		pllTest;					// $204: PLL Test Register
+-	{ 0 },		//	Byte										__filler44;
++	0x00,		//	Byte										__filler44;
+ 	0x1F,		//	Byte		pwrControl;					// $207: Power Control Register
+ 
+ 	{ 0 },		//	Byte										___filler3[0x300-0x208];
+ 
+ 	0x00,		//	Byte		intVector;					// $300: Interrupt Vector Register
+-	{ 0 },		//	Byte										___filler4;
++	0x00,		//	Byte										___filler4;
+ 	0x0000,		//	Word		intControl;					// $302: Interrupt Control Register
+ 	0x00FF,		//	Word		intMaskHi;					// $304: Interrupt Mask Register/HIGH word
+ 	0xFFFF,		//	Word		intMaskLo;					// $306: Interrupt Mask Register/LOW word
+@@ -162,21 +162,21 @@
+ 
+ 	0x00,		//	Byte		portADir;					// $400: Port A Direction Register
+ 	0x00,		//	Byte		portAData;					// $401: Port A Data Register
+-	{ 0 },		//	Byte										___filler5;
++	0x00,		//	Byte										___filler5;
+ 	0x00,		//	Byte		portASelect;				// $403: Port A Select Register
+ 
+ 	{ 0 },		//	Byte										___filler6[4];
+ 
+ 	0x00,		//	Byte		portBDir;					// $408: Port B Direction Register
+ 	0x00,		//	Byte		portBData;					// $409: Port B Data Register
+-	{ 0 },		//	Byte										___filler7;
++	0x00,		//	Byte										___filler7;
+ 	0x00,		//	Byte		portBSelect;				// $40B: Port B Select Register
+ 
+ 	{ 0 },		//	Byte										___filler8[4];
+ 
+ 	0x00,		//	Byte		portCDir;					// $410: Port C Direction Register
+ 	0x00,		//	Byte		portCData;					// $411: Port C Data Register
+-	{ 0 },		//	Byte										___filler9;
++	0x00,		//	Byte										___filler9;
+ 	0x00,		//	Byte		portCSelect;				// $413: Port C Select Register
+ 
+ 	{ 0 },		//	Byte										___filler10[4];
+@@ -184,10 +184,10 @@
+ 	0x00,		//	Byte		portDDir;					// $418: Port D Direction Register
+ 	0x00,		//	Byte		portDData;					// $419: Port D Data Register
+ 	0xFF,		//	Byte		portDPullupEn;				// $41A: Port D Pull-up Enable
+-	{ 0 },		//	Byte										___filler11;
++	0x00,		//	Byte										___filler11;
+ 	0x00,		//	Byte		portDPolarity;				// $41C: Port D Polarity Register
+ 	0x00,		//	Byte		portDIntReqEn;				// $41D: Port D Interrupt Request Enable
+-	{ 0 },		//	Byte										___filler12;
++	0x00,		//	Byte										___filler12;
+ 	0x00,		//	Byte		portDIntEdge;				// $41F: Port D IRQ Edge Register
+ 
+ 	0x00,		//	Byte		portEDir;					// $420: Port E Direction Register
+@@ -213,7 +213,7 @@
+ 
+ 	0x00,		//	Byte		portJDir;					// $438: Port J Direction Register
+ 	0x00,		//	Byte		portJData;					// $439: Port J Data Register
+-	{ 0 },		//	Byte										___filler19;
++	0x00,		//	Byte										___filler19;
+ 	0x00,		//	Byte		portJSelect;				// $43B: Port J Select Register
+ 
+ 	{ 0 },		//	Byte										___filler19a[4];
+@@ -279,7 +279,7 @@
+ 	{ 0 },		//	Byte										___filler28[0xA00-0x90A];
+ 
+ 	0x00000000,	//	DWord		lcdStartAddr;				// $A00: Screen Starting Address Register
+-	{ 0 },		//	Byte										___filler29;
++	0x00,		//	Byte										___filler29;
+ 	0xFF,		//	Byte		lcdPageWidth;				// $A05: Virtual Page Width Register
+ 	{ 0 },		//	Byte										___filler30[2];
+ 	0x03FF,		//	Word		lcdScreenWidth;				// $A08: Screen Width Register
+@@ -288,7 +288,7 @@
+ 	0x0000,		//	Word		lcdCursorXPos;				// $A18: Cursor X Position
+ 	0x0000,		//	Word		lcdCursorYPos;				// $A1A:	Cursor Y Position
+ 	0x0101,		//	Word		lcdCursorWidthHeight;		// $A1C: Cursor Width and Height
+-	{ 0 },		//	Byte										___filler32;
++	0x00,		//	Byte										___filler32;
+ 	0x7F,		//	Byte		lcdBlinkControl;			// $A1F: Blink Control Register
+ 	0x00,		//	Byte		lcdPanelControl;			// $A20: Panel Interface Control Register
+ 	0x00,		//	Byte		lcdPolarity;				// $A21: Polarity Config Register
+--- Emulator_Src_3.5/SrcShared/Hardware/EmRegsEZ.cpp.orig	2002-03-29 14:11:18.000000000 +0100
++++ Emulator_Src_3.5/SrcShared/Hardware/EmRegsEZ.cpp	2004-10-22 15:37:44.849017888 +0200
+@@ -84,13 +84,13 @@
+ 	0x2430,		// Word		pllControl;						// $200: PLL Control Register
+ 	0x0123,		// Word		pllFreqSel;						// $202: PLL Frequency Select Register
+ 	0,		// !!! ---> Marked as reserved in 1.4 Word		pllTest;						// $204: PLL Test Register (do not access)
+-	{ 0 },		// Byte											___filler44;
++	0x00,		// Byte											___filler44;
+ 	0x1F,		// Byte		pwrControl;						// $207: Power Control Register
+ 
+ 	{ 0 },		// Byte											___filler3[0x300-0x208];
+ 
+ 	0x00,		// Byte		intVector;						// $300: Interrupt Vector Register
+-	{ 0 },		// Byte											___filler4;
++	0x00,		// Byte											___filler4;
+ 	0x0000,		// Word		intControl;						// $302: Interrupt Control Register
+ 	0x00FF,		// Word		intMaskHi;						// $304: Interrupt Mask Register/HIGH word
+ 	0xFFFF,		// Word		intMaskLo;						// $306: Interrupt Mask Register/LOW word
+@@ -183,7 +183,7 @@
+ 	{ 0 },		// Byte											___filler28[0xA00-0x90C];
+ 
+ 	0x00000000,	// DWord	lcdStartAddr;					// $A00: Screen Starting Address Register
+-	{ 0 },		// Byte											___filler29;
++	0x00,		// Byte											___filler29;
+ 	0xFF,		// Byte		lcdPageWidth;					// $A05: Virtual Page Width Register
+ 	{ 0 },		// Byte											___filler30[2];
+ 	0x03FF,		// Word		lcdScreenWidth;					// $A08: Screen Width Register
+@@ -192,17 +192,17 @@
+ 	0x0000,		// Word		lcdCursorXPos;					// $A18: Cursor X Position
+ 	0x0000,		// Word		lcdCursorYPos;					// $A1A:	Cursor Y Position
+ 	0x0101,		// Word		lcdCursorWidthHeight;			// $A1C: Cursor Width and Height
+-	{ 0 },		// Byte											___filler32;
++	0x00,		// Byte											___filler32;
+ 	0x7F,		// Byte		lcdBlinkControl;				// $A1F: Blink Control Register
+ 	0x00,		// Byte		lcdPanelControl;				// $A20: Panel Interface Control Register
+ 	0x00,		// Byte		lcdPolarity;					// $A21: Polarity Config Register
+-	{ 0 },		// Byte											___filler33;						
++	0x00,		// Byte											___filler33;						
+ 	0x00,		// Byte		lcdACDRate;						// $A23: ACD (M) Rate Control Register
+-	{ 0 },		// Byte											___filler34;
++	0x00,		// Byte											___filler34;
+ 	0x00,		// Byte		lcdPixelClock;					// $A25: Pixel Clock Divider Register
+-	{ 0 },		// Byte											___filler35;
++	0x00,		// Byte											___filler35;
+ 	0x40,		// Byte		lcdClockControl;				// $A27: Clocking Control Register
+-	{ 0 },		// Byte											___filler36;
++	0x00,		// Byte											___filler36;
+ 	0xFF,		// Byte		lcdRefreshRateAdj;				// $A29: Refresh Rate Adjustment Register
+ 	{ 0 },		// Byte											___filler2003[0xA2D-0xA2A];
+ 	0x00,		// Byte		lcdPanningOffset;				// $A2D: Panning Offset Register
+@@ -210,10 +210,10 @@
+ 	{ 0 },		// Byte											___filler37[0xA31-0xA2E];
+ 
+ 	0xB9,		// Byte		lcdFrameRate;					// $A31: Frame Rate Control Modulation Register
+-	{ 0 },		// Byte											___filler2004;
++	0x00,		// Byte											___filler2004;
+ 	0x84,		// Byte		lcdGrayPalette;					// $A33: Gray Palette Mapping Register
+ 	0x00,		// Byte		lcdReserved;					// $A34: Reserved
+-	{ 0 },		// Byte											___filler2005;
++	0x00,		// Byte											___filler2005;
+ 	0x0000,		// Word		lcdContrastControlPWM;			// $A36: Contrast Control
+ 
+ 	{ 0 },		// Byte											___filler40[0xB00-0xA38];
