@@ -249,3 +249,45 @@
  	0x0000,		// UInt16	lcdContrastControlPWM;		// $A36: Contrast Control
  	0x00,		// UInt8	lcdRefreshModeControl;		// $A38: Refresh Mode Control Register
  	0x62,		// UInt8	lcdDMAControl;				// $A39: DMA Control Register
+--- Emulator_Src_3.5/SrcShared/Hardware/EmRegsEZTRGpro.cpp.orig	2002-03-29 14:11:18.000000000 +0100
++++ Emulator_Src_3.5/SrcShared/Hardware/EmRegsEZTRGpro.cpp	2004-10-22 16:10:29.612328464 +0200
+@@ -229,7 +229,7 @@
+ void EmRegsEZTRGpro::SetSubBankHandlers(void)
+ {
+ 	EmRegsEZ::SetSubBankHandlers();
+-	this->SetHandler((ReadFunction)&EmRegs::StdRead,
++	this->SetHandler((ReadFunction)&EmRegsEZTRGpro::StdRead,
+                          (WriteFunction)&EmRegsEZTRGpro::spiWrite,
+ 	                 addressof(spiMasterData),
+ 	                 sizeof(f68EZ328Regs.spiMasterData));
+--- Emulator_Src_3.5/SrcShared/Hardware/EmRegsVZHandEra330.cpp.orig	2002-03-29 14:11:19.000000000 +0100
++++ Emulator_Src_3.5/SrcShared/Hardware/EmRegsVZHandEra330.cpp	2004-10-22 16:17:34.251773456 +0200
+@@ -588,14 +588,14 @@
+ 
+     // SD support
+ 	this->SetHandler((ReadFunction)&EmRegsVZHandEra330::spiRxDRead,
+-                         (WriteFunction)&EmRegsVZ::StdWrite,
++                         (WriteFunction)&EmRegsVZHandEra330::StdWrite,
+ 	                 addressof(spiRxD),
+ 	                 sizeof(UInt16));
+-	this->SetHandler((ReadFunction)&EmRegsVZ::StdRead,
++	this->SetHandler((ReadFunction)&EmRegsVZHandEra330::StdRead,
+                          (WriteFunction)&EmRegsVZHandEra330::spiTxDWrite,
+ 	                 addressof(spiTxD),
+ 	                 sizeof(UInt16));
+-	this->SetHandler((ReadFunction)&EmRegsVZ::StdRead,
++	this->SetHandler((ReadFunction)&EmRegsVZHandEra330::StdRead,
+                          (WriteFunction)&EmRegsVZHandEra330::spiCont1Write,
+ 	                 addressof(spiCont1),
+ 	                 sizeof(UInt16));
+--- Emulator_Src_3.5/SrcShared/Hardware/EmRegsVZPalmM505.cpp.orig	2002-03-29 14:11:19.000000000 +0100
++++ Emulator_Src_3.5/SrcShared/Hardware/EmRegsVZPalmM505.cpp	2004-10-22 16:19:50.359082000 +0200
+@@ -50,7 +50,7 @@
+ 
+ 	// Now add standard/specialized handers for the defined registers.
+ 
+-	this->SetHandler ((ReadFunction) &EmRegsVZ::StdRead,
++	this->SetHandler ((ReadFunction) &EmRegsVZPalmM505::StdRead,
+ 		(WriteFunction) &EmRegsVZPalmM505::portFSelectWrite,
+ 		addressof (portFSelect), sizeof (f68VZ328Regs.portFSelect));
+ }
