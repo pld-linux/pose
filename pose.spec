@@ -1,5 +1,5 @@
 Summary:	Palm OS emulator
-Summary(pl):	Emulator Palm OS
+Summary(pl.UTF-8):   Emulator Palm OS
 Name:		pose
 Version:	3.5
 Release:	1
@@ -28,12 +28,12 @@ emulate the functions of a Palm hardware device, including running the
 built-in application, as well as installing and running 3rd party
 applications.
 
-%description -l pl
-Palm OS Emulator to aplikacja emuluj±ca sprzêt wiêkszo¶ci urz±dzeñ
+%description -l pl.UTF-8
+Palm OS Emulator to aplikacja emulujÄ…ca sprzÄ™t wiÄ™kszoÅ›ci urzÄ…dzeÅ„
 platformy Palm Computing (np. Pilot, PalmPilot, Palm III, Palm V, Palm
-VII itp.). Przy u¿yciu tego emulatora mo¿na emulowaæ funkcje urz±dzeñ
-Palm w³±cznie z wbudowanymi aplikacjami, a tak¿e instalowaæ i
-uruchamiaæ dowolne aplikacje firm trzecich.
+VII itp.). Przy uÅ¼yciu tego emulatora moÅ¼na emulowaÄ‡ funkcje urzÄ…dzeÅ„
+Palm wÅ‚Ä…cznie z wbudowanymi aplikacjami, a takÅ¼e instalowaÄ‡ i
+uruchamiaÄ‡ dowolne aplikacje firm trzecich.
 
 %prep
 %setup -q -n Emulator_Src_%{version}
