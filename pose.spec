@@ -1,5 +1,5 @@
 Summary:	Palm OS emulator
-Summary(pl.UTF-8):   Emulator Palm OS
+Summary(pl.UTF-8):	Emulator Palm OS
 Name:		pose
 Version:	3.5
 Release:	1
