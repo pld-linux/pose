@@ -4,7 +4,7 @@ Name:		pose
 Version:	3.5
 Release:	1
 License:	GPL
-Group:		Emulators
+Group:		Applications/Emulators
 #Source0Download: http://www.palmos.com/dev/tools/emulator/
 Source0:	http://www.palmos.com/dev/tools/emulator/sources/emulator_src_%{version}.tar.gz
 # Source0-md5:	c69b10798e524b999739bf1950125655
